@@ -2,26 +2,27 @@ name: CI
 
 on:
   pull_request:
-    branches: [ "main" ]
+    branches:
+      - main
 
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: '8.0.x'
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
 
-    - name: Restore dependencies
-      run: dotnet restore DevOpsProject/DevOpsProject.sln
+      - name: Restore dependencies
+        run: dotnet restore DevOpsProject/DevOpsProject.sln
 
-    - name: Build
-      run: dotnet build DevOpsProject/DevOpsProject.sln --no-restore --configuration Release
+      - name: Build
+        run: dotnet build DevOpsProject/DevOpsProject.sln --no-restore --configuration Release
 
-    - name: Run tests
-      run: dotnet test DevOpsProject/DevOpsProject.sln --no-build --configuration Release --verbosity normal
+      - name: Run tests
+        run: dotnet test DevOpsProject/DevOpsProject.sln --no-build --configuration Release --verbosity normal

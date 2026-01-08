@@ -27,6 +27,11 @@ W ramach projektu zaprezentowano:
 
 ---
 
+## Sekrety i bezpieczeństwo
+
+Projekt wykorzystuje GitHub Secrets do przechowywania wrażliwych danych.
+Sekrety są przekazywane do aplikacji jako zmienne środowiskowe i wykorzystywane w pipeline CI bez zapisywania ich w repozytorium.
+
 ## Endpointy
 
 

@@ -23,7 +23,7 @@ W ramach projektu zaprezentowano:
 - zarządzanie backlogiem i zadaniami przy użyciu GitHub Projects,
 - testy jednostkowe i integracyjne z wykorzystaniem xUnit,
 - pipeline Continuous Integration zbudowany w GitHub Actions,
-- automatyczne wdrożenie aplikacji (Continuous Deployment) do chmury Microsoft Azure.
+- automatyczne wdrożenie aplikacji (Continuous Deployment) do chmury Microsoft Azure. Pipeline skonfigurowany.
 
 ---
 

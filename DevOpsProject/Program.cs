@@ -27,5 +27,14 @@ app.MapGet("/products", () =>
     return Results.Ok(products);
 });
 
+var appEnv = Environment.GetEnvironmentVariable("APP_ENV") ?? "local";
+var appVersion = Environment.GetEnvironmentVariable("APP_VERSION") ?? "dev";
+
+app.MapGet("/info", () => new
+{
+    Environment = appEnv,
+    Version = appVersion
+});
+
 app.Run();
 public partial class Program { }

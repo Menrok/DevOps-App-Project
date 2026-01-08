@@ -8,7 +8,10 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
-
+    env:
+      APP_ENV: ${{ secrets.APP_ENV }}
+      APP_VERSION: ${{ secrets.APP_VERSION }}
+      
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -26,3 +29,9 @@ jobs:
 
       - name: Run tests
         run: dotnet test DevOpsProject/DevOpsProject.sln --no-build --configuration Release --verbosity normal
+        
+      - name: Show secrets usage (demo)
+        run: |
+          echo "Environment: $APP_ENV"
+          echo "Version: $APP_VERSION"
+ 

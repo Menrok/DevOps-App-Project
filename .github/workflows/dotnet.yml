@@ -1,6 +1,9 @@
 name: CI
 
 on:
+  push:
+    branches:
+      - main
   pull_request:
     branches:
       - main
@@ -27,3 +30,29 @@ jobs:
 
       - name: Run tests
         run: dotnet test DevOpsProject/DevOpsProject.sln --no-build --configuration Release --verbosity normal
+
+      - name: Check GitHub Secrets availability
+        run: |
+          echo "Checking secrets..."
+          
+          if [ -z "$APP_ENV" ]; then
+            echo "APP_ENV not available"
+            exit 1
+          fi
+
+          if [ -z "$APP_NAME" ]; then
+            echo "APP_NAME not available"
+            exit 1
+          fi
+
+          if [ -z "$APP_VERSION" ]; then
+            echo "APP_VERSION not available"
+            exit 1
+          fi
+
+          echo "All required secrets are available"
+        env:
+          APP_ENV: ${{ secrets.APP_ENV }}
+          APP_NAME: ${{ secrets.APP_NAME }}
+          APP_VERSION: ${{ secrets.APP_VERSION }}
+

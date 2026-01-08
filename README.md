@@ -1,6 +1,6 @@
 # DevOps C# Project
 
-Projekt demonstracyjny przygotowany na potrzeby zaliczenia przedmiotu DevOps.  
+Projekt demonstracyjny przygotowany na potrzeby zaliczenia przedmiotu **DevOps**.  
 Celem projektu jest zaprezentowanie kompletnego procesu DevOps, obejmującego zarządzanie kodem źródłowym, backlogiem zadań, testami automatycznymi oraz pipeline’ami CI/CD.
 
 Aplikacja posiada uproszczoną logikę biznesową i służy wyłącznie jako nośnik do prezentacji procesów DevOps, a nie jako pełnoprawny system produkcyjny.
@@ -9,7 +9,7 @@ Aplikacja posiada uproszczoną logikę biznesową i służy wyłącznie jako no�
 
 ## Autor
 
-- Michał Handzel
+- **Michał Handzel**
 
 ---
 
@@ -23,29 +23,43 @@ W ramach projektu zaprezentowano:
 - zarządzanie backlogiem i zadaniami przy użyciu GitHub Projects,
 - testy jednostkowe i integracyjne z wykorzystaniem xUnit,
 - pipeline Continuous Integration zbudowany w GitHub Actions,
-- automatyczne wdrożenie aplikacji (Continuous Deployment) do chmury Microsoft Azure. Pipeline skonfigurowany.
+- automatyczne wdrożenie aplikacji (Continuous Deployment) do chmury Microsoft Azure.
 
 ---
 
 ## Sekrety i bezpieczeństwo
 
-Projekt wykorzystuje GitHub Secrets do przechowywania wrażliwych danych.
-Sekrety są przekazywane do aplikacji jako zmienne środowiskowe i wykorzystywane w pipeline CI bez zapisywania ich w repozytorium.
+Projekt wykorzystuje **GitHub Secrets** do przechowywania wrażliwych danych konfiguracyjnych.  
+Sekrety są przekazywane do aplikacji jako zmienne środowiskowe i wykorzystywane w pipeline CI bez zapisywania ich bezpośrednio w repozytorium.
+
+---
+
+## Konteneryzacja aplikacji
+
+Aplikacja została skonteneryzowana przy użyciu **Docker**
+W repozytorium znajdują się:
+- `Dockerfile` – definicja obrazu aplikacji,
+- `.dockerignore` – lista plików wykluczonych z procesu budowania obrazu.
+
+---
 
 ## Endpointy
 
-
-`/` Zwraca informacje o stanie aplikacji, środowisku oraz aktualnym czasie serwera
-`/products` Zwraca przykładową listę produktów w formacie JSON
+- **`/`** – zwraca informacje o stanie aplikacji, środowisku oraz aktualnym czasie serwera  
+- **`/products`** – zwraca przykładową listę produktów w formacie JSON  
 
 ---
 
 ## Uruchomienie lokalne
 
 ### Wymagania
-- .NET SDK 8.0 lub nowszy
+- .NET SDK **8.0** lub nowszy  
+- **Docker** (opcjonalnie – do uruchomienia aplikacji w kontenerze)
 
-### Kroki
+---
+
+### Uruchomienie bez Dockera
+
 ```bash
 dotnet restore
 dotnet run
